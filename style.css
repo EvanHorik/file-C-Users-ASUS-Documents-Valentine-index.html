@@ -1,0 +1,246 @@
+/* =========================
+   RESET & BODY
+========================= */
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  overflow: hidden;
+}
+
+/* =========================
+   LOVE RAIN (LEBIH LAMBAT & SMOOTH)
+========================= */
+.love-rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.love-rain span {
+  position: absolute;
+  top: -12%;
+  font-size: 22px;
+  opacity: .75;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* SEBARAN + SPEED LEBIH PELAN */
+.love-rain span:nth-child(1)  { left: 3%;  animation-duration: 18s; }
+.love-rain span:nth-child(2)  { left: 7%;  animation-duration: 20s; animation-delay: 2s; }
+.love-rain span:nth-child(3)  { left: 11%; animation-duration: 17s; animation-delay: 4s; }
+.love-rain span:nth-child(4)  { left: 15%; animation-duration: 22s; animation-delay: 1s; }
+.love-rain span:nth-child(5)  { left: 19%; animation-duration: 19s; animation-delay: 3s; }
+.love-rain span:nth-child(6)  { left: 23%; animation-duration: 21s; animation-delay: 5s; }
+.love-rain span:nth-child(7)  { left: 27%; animation-duration: 18s; animation-delay: 2s; }
+.love-rain span:nth-child(8)  { left: 31%; animation-duration: 24s; animation-delay: 4s; }
+.love-rain span:nth-child(9)  { left: 35%; animation-duration: 20s; }
+.love-rain span:nth-child(10) { left: 39%; animation-duration: 22s; animation-delay: 3s; }
+.love-rain span:nth-child(11) { left: 43%; animation-duration: 19s; animation-delay: 5s; }
+.love-rain span:nth-child(12) { left: 47%; animation-duration: 21s; animation-delay: 2s; }
+.love-rain span:nth-child(13) { left: 51%; animation-duration: 18s; animation-delay: 4s; }
+.love-rain span:nth-child(14) { left: 55%; animation-duration: 24s; animation-delay: 7s; }
+.love-rain span:nth-child(15) { left: 59%; animation-duration: 20s; animation-delay: 13s; }
+.love-rain span:nth-child(16) { left: 63%; animation-duration: 22s; animation-delay: 5s; }
+.love-rain span:nth-child(17) { left: 67%; animation-duration: 19s; }
+.love-rain span:nth-child(18) { left: 71%; animation-duration: 21s; animation-delay: 13s; }
+.love-rain span:nth-child(19) { left: 75%; animation-duration: 18s; animation-delay: 12s; }
+.love-rain span:nth-child(20) { left: 79%; animation-duration: 24s; animation-delay: 15s; }
+.love-rain span:nth-child(21) { left: 83%; animation-duration: 20s; animation-delay: 10s; }
+.love-rain span:nth-child(22) { left: 87%; animation-duration: 22s; animation-delay: 5s; }
+.love-rain span:nth-child(23) { left: 91%; animation-duration: 19s; }
+.love-rain span:nth-child(24) { left: 95%; animation-duration: 21s; animation-delay: 10s; }
+
+@keyframes fall {
+  0%   { transform: translateY(-15vh) scale(.6); opacity: 0; }
+  10%  { opacity: .75; }
+  100% { transform: translateY(115vh) scale(1.1); opacity: 0; }
+}
+
+/* =========================
+   PAPER BAG
+========================= */
+.paper-bag {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  height: 480px;
+  background: #cfa97e;
+  border-radius: 0 0 24px 24px;
+  box-shadow: 0 25px 50px rgba(0,0,0,.25);
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 5;
+}
+
+/* HANDLE */
+.handle {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 90px;
+  border: 6px solid #8b5e3c;
+  border-bottom: none;
+  border-radius: 90px 90px 0 0;
+  z-index: 7;
+}
+
+/* TOP */
+.top {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background: #d8b48a;
+  transform-origin: top;
+  transition: transform .9s cubic-bezier(.25,.46,.45,.94);
+  z-index: 6;
+}
+
+.paper-bag.open .top {
+  transform: rotateX(115deg);
+}
+
+/* MOUTH */
+.bag-mouth {
+  position: absolute;
+  top: 70px;
+  width: 100%;
+  height: 35px;
+  background: linear-gradient(to bottom, rgba(0,0,0,.25), transparent);
+  z-index: 5;
+}
+
+/* =========================
+   PAPER
+========================= */
+.paper {
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  width: 86%;
+  background: #fffdf8;
+  border-radius: 14px;
+  transform: translateX(-50%) translateY(-125%) rotateX(16deg);
+  box-shadow: 0 6px 14px rgba(0,0,0,.12);
+  z-index: 4;
+  will-change: transform;
+}
+
+.paper-bag.open .paper {
+  animation: paperPull 3.6s cubic-bezier(.25,.46,.45,.94) forwards;
+}
+
+@keyframes paperPull {
+  0%   { transform: translateX(-50%) translateY(-125%) rotateX(16deg); }
+  25%  { transform: translateX(-50%) translateY(-95%) rotateX(13deg); }
+  50%  { transform: translateX(-50%) translateY(-55%) rotateX(8deg); }
+  70%  {
+    transform: translateX(-50%) translateY(-25%) rotateX(4deg);
+    box-shadow: 0 16px 32px rgba(0,0,0,.22);
+  }
+  85%  { transform: translateX(-50%) translateY(4%) rotateX(-.5deg); }
+  100% {
+    transform: translateX(-50%) translateY(0) rotateX(0);
+    box-shadow: 0 22px 40px rgba(0,0,0,.32);
+  }
+}
+
+/* CONTENT */
+.paper-inner {
+  padding: 22px 20px;
+  opacity: 0;
+}
+
+.paper-bag.open .paper-inner {
+  animation: revealText 1.4s ease forwards;
+  animation-delay: 2.2s;
+}
+
+@keyframes revealText {
+  to { opacity: 1; }
+}
+
+/* TEXT */
+.paper h2 {
+  margin: 0 0 10px;
+  color: #c2185b;
+}
+
+.paper p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================
+   MUSIC CARD
+========================= */
+.music-card {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+/* COVER */
+.cover {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-right: 12px;
+  background: linear-gradient(135deg, #ff5f9e, #ff8fb1);
+}
+
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.music-info strong {
+  font-size: 14px;
+}
+
+.music-info span {
+  font-size: 12px;
+  color: #777;
+}
+
+.music-card button {
+  margin-left: auto;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #e6396f;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* FOOTER */
+.footer {
+  position: absolute;
+  bottom: 6px;
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  color: #5b2c2c;
+}

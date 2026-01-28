@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine Paper Bag</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOVE RAIN BACKGROUND -->
+<div class="love-rain">
+  <span>❤️</span><span>💗</span><span>💖</span><span>💕</span><span>❤️</span>
+  <span>💗</span><span>💖</span><span>💕</span><span>❤️</span><span>💗</span>
+  <span>❤️</span><span>💗</span><span>💖</span><span>💕</span><span>❤️</span>
+  <span>💗</span><span>💖</span><span>💕</span><span>❤️</span><span>💗</span>
+  <span>❤️</span><span>💗</span><span>💖</span><span>💕</span><span>❤️</span>
+  <span>💗</span><span>💖</span><span>💕</span><span>❤️</span><span>💗</span>
+</div>
+
+<!-- PAPER BAG -->
+<div class="paper-bag" id="bag">
+  <div class="handle"></div>
+  <div class="top"></div>
+  <div class="bag-mouth"></div>
+
+  <!-- PAPER -->
+  <div class="paper">
+    <div class="paper-inner">
+      <h2>💌 Happy Valentine</h2>
+      <p>
+        sorry yaaa kaloo iniii jdi 'sesuatu' yg unexpected, 
+        sa cmn mau ngerayain hari valentine nya ajaaa i don't expect something else. 
+        anggap aja klo ini tu kyk
+        "a little gift from santa claus and you are 
+        the sweet little girl who got christmas present HO.. HOO.. HOOO..".
+        terakhir, jangan percaya klo yg ngasih blg ini titipan. 
+        gift ini beneran dri dia. play this music and listen to the lyrics yaaa
+      </p>
+
+      <!-- MUSIC CARD -->
+      <div class="music-card">
+        <div class="cover">
+          <!-- FOTO OPSIONAL -->
+          <img src="OIP.jpg" alt="Cover Lagu" onerror="this.style.display='none'">
+        </div>
+
+        <div class="music-info">
+          <strong>Understand</strong>
+          <span>Keshi</span>
+        </div>
+
+        <button id="playBtn">▶</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Tap the bag 💕</div>
+</div>
+
+<audio id="music" src="Keshi Understand.mpeg"></audio>
+
+<script>
+  const bag = document.getElementById("bag");
+  const music = document.getElementById("music");
+  const playBtn = document.getElementById("playBtn");
+  let opened = false;
+
+  // buka bag
+  bag.addEventListener("click", () => {
+    if (!opened) {
+      bag.classList.add("open");
+      opened = true;
+    }
+  });
+
+  // play / pause music
+  playBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (music.paused) {
+      music.play();
+      playBtn.textContent = "❚❚";
+    } else {
+      music.pause();
+      playBtn.textContent = "▶";
+    }
+  });
+</script>
+
+</body>
+</html>
